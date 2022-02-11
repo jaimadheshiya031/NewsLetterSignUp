@@ -4,9 +4,6 @@ const path=require('path');
 const request=require('request');
 
 const app=express();
-const PORT=process.env.PORT || 3000;
-
-
 
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -19,7 +16,7 @@ app.use(express.static('public'));
 app.post('/',(req,res)=>{
     var email=req.body.email;
     var fname=req.body.n1;
-    var sname=req.body.n2;
+    var lname=req.body.n2;
 
     var data= {
         members:[
@@ -28,7 +25,7 @@ app.post('/',(req,res)=>{
               status:"subscribed",
               merge_fields:{
                 FNAME:fname,
-                LNAME:sname
+                LNAME:lname
             }
             }
         ]
@@ -53,18 +50,18 @@ app.post('/',(req,res)=>{
                 res.sendFile(path.join(__dirname,'/public','/success.html'));
           }
           else{
-            res.sendFile(path.join(__dirname,'/public','/failure.html'));
-          }
+            res.sendFile(path.join(__dirname,'/public','/failure.html')); 
+          } 
     });
 });
-app.post('/failure',(req,res)=>{
-    res.redirect('/');
+app.post('/failure',(req,res)=>{ 
+    res.redirect('/'); 
 });
 
 //api key =   bcabdac61d1f925f1a84ec982db3bfc7-us14
 //list id =   173817df89
 //'https://us3.api.mailchimp.com/3.0/lists/c88fb2ef24' 
 
-app.listen(PORT,()=> {
-    console.log('Server started runing at',PORT); 
-});  
+app.listen(process.env.PORT || 3000,()=> {  
+    console.log('Server started runing at 3000');   
+});   
