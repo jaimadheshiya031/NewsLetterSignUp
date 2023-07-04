@@ -58,7 +58,6 @@ app.post('/failure',(req,res)=>{
     res.redirect('/'); 
 });
 
-//api key =   bcabdac61d1f925f1a84ec982db3bfc7-us14
 //list id =   173817df89
 //'https://us3.api.mailchimp.com/3.0/lists/c88fb2ef24' 
 
